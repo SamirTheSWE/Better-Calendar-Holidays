@@ -1,0 +1,55 @@
+name: CI
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    backend:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: backend
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: "3.12"
+            - name: Install Dependencies
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -r requirements-dev.txt
+            - name: Format Check
+              run: ruff format --check src
+            - name: Lint
+              run: ruff check src
+            - name: Type Check
+              run: mypy src
+            - name: Import Check
+              run: PYTHONPATH=src python -c "from app import app; assert app is not None"
+
+    frontend:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: frontend
+        steps:
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "pnpm"
+                  cache-dependency-path: frontend/pnpm-lock.yaml
+            - name: Install Dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Format Check
+              run: pnpm format:check
+            - name: Lint
+              run: pnpm lint
+            - name: Stylelint
+              run: pnpm stylelint
+            - name: Build
+              run: pnpm build

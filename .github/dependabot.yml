@@ -1,0 +1,76 @@
+version: 2
+updates:
+    - package-ecosystem: "npm"
+      directory: "/frontend"
+      schedule:
+          interval: "weekly"
+          day: "monday"
+          time: "09:00"
+          timezone: "Europe/London"
+      open-pull-requests-limit: 10
+      commit-message:
+          prefix: "chore"
+          prefix-development: "chore"
+          include: "scope"
+      reviewers:
+          - "SamirTheSWE"
+      assignees:
+          - "SamirTheSWE"
+      labels:
+          - "dependabot"
+      groups:
+          frontend-dependencies:
+              patterns:
+                  - "*"
+      rebase-strategy: "auto"
+      target-branch: "main"
+
+    - package-ecosystem: "pip"
+      directory: "/backend"
+      schedule:
+          interval: "weekly"
+          day: "monday"
+          time: "09:00"
+          timezone: "Europe/London"
+      open-pull-requests-limit: 10
+      commit-message:
+          prefix: "chore"
+          prefix-development: "chore"
+          include: "scope"
+      reviewers:
+          - "SamirTheSWE"
+      assignees:
+          - "SamirTheSWE"
+      labels:
+          - "dependabot"
+      groups:
+          backend-dependencies:
+              patterns:
+                  - "*"
+      rebase-strategy: "auto"
+      target-branch: "main"
+
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+          day: "monday"
+          time: "09:00"
+          timezone: "Europe/London"
+      open-pull-requests-limit: 10
+      commit-message:
+          prefix: "chore"
+          prefix-development: "chore"
+          include: "scope"
+      reviewers:
+          - "SamirTheSWE"
+      assignees:
+          - "SamirTheSWE"
+      labels:
+          - "dependabot"
+      groups:
+          github-actions-dependencies:
+              patterns:
+                  - "*"
+      rebase-strategy: "auto"
+      target-branch: "main"
