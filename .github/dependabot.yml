@@ -14,10 +14,8 @@ updates:
           include: "scope"
       reviewers:
           - "SamirTheSWE"
-      assignees:
-          - "SamirTheSWE"
       labels:
-          - "dependabot"
+          - "dependencies"
       groups:
           frontend-dependencies:
               patterns:
@@ -39,10 +37,8 @@ updates:
           include: "scope"
       reviewers:
           - "SamirTheSWE"
-      assignees:
-          - "SamirTheSWE"
       labels:
-          - "dependabot"
+          - "dependencies"
       groups:
           backend-dependencies:
               patterns:
@@ -64,10 +60,8 @@ updates:
           include: "scope"
       reviewers:
           - "SamirTheSWE"
-      assignees:
-          - "SamirTheSWE"
       labels:
-          - "dependabot"
+          - "dependencies"
       groups:
           github-actions-dependencies:
               patterns:
